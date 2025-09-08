@@ -1,0 +1,31 @@
+<a [routerLink]="['/inbox', emailListItem.id]" class="email-list-item" [class.selected]="emailListItem.isSelected">
+
+  <div class="selection-checkbox">
+    <input type="checkbox" [checked]="emailListItem.isSelected || false">
+  </div>
+
+  <div class="avatar-container">
+    <img [src]="emailListItem.avatarUrl" alt="{{ emailListItem.userName }}'s avatar" class="avatar">
+  </div>
+
+  <div class="email-info">
+    <div class="user-name">{{ emailListItem.userName }}</div>
+    <div class="last-message-time">{{ emailListItem.lastMessageTime }}</div>
+  </div>
+
+  <div class="status-indicators">
+    @if (emailListItem.unreadCount && emailListItem.unreadCount > 0) {
+    <div class="unread-badge">
+      {{ emailListItem.unreadCount }} new
+    </div>
+    }
+
+    <div class="star-icon" [class.starred]="emailListItem.isStarred">
+      @if (emailListItem.isStarred) {
+      <span>★</span>
+      } @else {
+      <span>☆</span>
+      }
+    </div>
+  </div>
+</a>
